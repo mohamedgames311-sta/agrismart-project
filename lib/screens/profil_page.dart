@@ -1,10 +1,11 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:agrismart/providers/zones_provider.dart';
 import 'package:agrismart/providers/auth_provider.dart';
 import 'package:agrismart/providers/reglages_provider.dart';
+import 'package:agrismart/screens/suivi_eau_page.dart';
+import 'package:agrismart/screens/detection_maladie_page.dart';
 
 import 'a_propos_page.dart';
 
@@ -90,6 +91,44 @@ class ProfilPage extends StatelessWidget {
                 leading: const Icon(Icons.grass),
                 title: const Text('Zones suivies'),
                 trailing: Text('$nombreZones'),
+              ),
+            ),
+
+            const SizedBox(height: 12),
+
+            // Consommation d'eau par zone
+            Card(
+              child: ListTile(
+                leading: const Icon(Icons.water_drop, color: Colors.blue),
+                title: const Text('Consommation d\'eau par zone'),
+                trailing: const Icon(Icons.arrow_forward_ios),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const SuiviEauPage(),
+                    ),
+                  );
+                },
+              ),
+            ),
+
+            const SizedBox(height: 12),
+
+            // Détection des maladies (IA)
+            Card(
+              child: ListTile(
+                leading: const Icon(Icons.local_hospital, color: Colors.red),
+                title: const Text('Détection des maladies (IA)'),
+                trailing: const Icon(Icons.arrow_forward_ios),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const DetectionMaladiePage(),
+                    ),
+                  );
+                },
               ),
             ),
 

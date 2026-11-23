@@ -1,7 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'package:agrismart/screens/suivi_eau_page.dart';
 import 'package:agrismart/providers/zones_provider.dart';
 import 'package:agrismart/theme/app_theme.dart';
 import 'package:agrismart/widgets/resume_exploitation.dart';
@@ -35,6 +34,29 @@ class StatistiquesPage extends StatelessWidget {
       body: ListView(
         children: [
           const MeteoCard(),
+
+          // Carte d'accès au Suivi de la consommation d'eau
+          Card(
+            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: ListTile(
+              leading: const CircleAvatar(
+                backgroundColor: Colors.blue,
+                child: Icon(Icons.water_drop, color: Colors.white),
+              ),
+              title: const Text(
+                'Suivi de la consommation d\'eau',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              subtitle: const Text('Consulter par jour, semaine et mois'),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const SuiviEauPage()),
+                );
+              },
+            ),
+          ),
 
           if (zones.isEmpty)
             const Padding(
