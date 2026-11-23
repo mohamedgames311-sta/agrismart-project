@@ -1,10 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:agrismart/providers/zones_provider.dart';
 import 'package:agrismart/providers/auth_provider.dart';
 import 'package:agrismart/providers/reglages_provider.dart';
+import 'package:agrismart/screens/crop_calendar_page.dart';
 
 import 'a_propos_page.dart';
 
@@ -90,6 +90,24 @@ class ProfilPage extends StatelessWidget {
                 leading: const Icon(Icons.grass),
                 title: const Text('Zones suivies'),
                 trailing: Text('$nombreZones'),
+              ),
+            ),
+
+            const SizedBox(height: 12),
+
+            Card(
+              child: ListTile(
+                leading: const Icon(Icons.calendar_month),
+                title: const Text('Calendrier des cultures'),
+                trailing: const Icon(Icons.arrow_forward_ios),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const CropCalendarPage(),
+                    ),
+                  );
+                },
               ),
             ),
 
