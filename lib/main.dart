@@ -3,25 +3,33 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:agrismart/config.dart';
 import 'package:agrismart/firebase_options.dart';
 import 'package:agrismart/providers/zones_provider.dart';
 import 'package:agrismart/providers/auth_provider.dart';
 import 'package:agrismart/providers/meteo_provider.dart';
 import 'package:agrismart/providers/reglages_provider.dart';
-import 'package:agrismart/providers/calendar_provider.dart'; // NOUVEAU PROVIDER
+import 'package:agrismart/providers/calendar_provider.dart';
 import 'package:agrismart/screens/auth_gate.dart';
 import 'package:agrismart/services/auth_service.dart';
+import 'package:agrismart/services/auth_locale_service.dart';
 import 'package:agrismart/services/firebase_auth_service.dart';
 import 'package:agrismart/theme/app_theme.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  final AuthService authService;
 
-  final AuthService authService = FirebaseAuthService();
+  if (utiliserFirebase) {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    authService = FirebaseAuthService();
+  } else {
+    authService = AuthLocaleService();
+  }
+
   final prefs = await SharedPreferences.getInstance();
 
   runApp(
@@ -43,7 +51,7 @@ Future<void> main() async {
           create: (_) => ReglagesProvider(prefs),
         ),
         ChangeNotifierProvider(
-          create: (_) => CalendarProvider(prefs), // AJOUT DU CALENDAR PROVIDER
+          create: (_) => CalendarProvider(prefs),
         ),
       ],
       child: const AgriSmartApp(),
