@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
@@ -9,6 +8,7 @@ import 'package:agrismart/providers/zones_provider.dart';
 import 'package:agrismart/providers/auth_provider.dart';
 import 'package:agrismart/providers/meteo_provider.dart';
 import 'package:agrismart/providers/reglages_provider.dart';
+import 'package:agrismart/providers/calendar_provider.dart'; // NOUVEAU PROVIDER
 import 'package:agrismart/screens/auth_gate.dart';
 import 'package:agrismart/services/auth_service.dart';
 import 'package:agrismart/services/firebase_auth_service.dart';
@@ -22,7 +22,6 @@ Future<void> main() async {
   );
 
   final AuthService authService = FirebaseAuthService();
-
   final prefs = await SharedPreferences.getInstance();
 
   runApp(
@@ -42,6 +41,9 @@ Future<void> main() async {
         ),
         ChangeNotifierProvider(
           create: (_) => ReglagesProvider(prefs),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => CalendarProvider(prefs), // AJOUT DU CALENDAR PROVIDER
         ),
       ],
       child: const AgriSmartApp(),
