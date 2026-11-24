@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'package:agrismart/models/zone.dart';
 import 'package:agrismart/providers/zones_provider.dart';
+import 'package:agrismart/screens/scanner_page.dart';
 import 'package:agrismart/screens/zone_detail_page.dart';
 import 'package:agrismart/screens/zone_form_page.dart';
 import 'package:agrismart/widgets/fiche_exploitation.dart';
@@ -135,6 +136,20 @@ class _ZonesPageState extends State<ZonesPage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('AgriSmart'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.qr_code_scanner),
+            tooltip: 'Scanner un code QR',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const ScannerPage(),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _ajouter,

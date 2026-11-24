@@ -183,6 +183,18 @@ class _ConnexionPageState extends State<ConnexionPage> {
                           : const Text('Se connecter'),
                     ),
 
+                    const SizedBox(height: 8),
+
+                    OutlinedButton.icon(
+                      onPressed: () {
+                        _emailCtrl.text = 'admin@agrismart.com';
+                        _mdpCtrl.text = '123456';
+                        setState(() {});
+                      },
+                      icon: const Icon(Icons.flash_on, color: Colors.orange),
+                      label: const Text('Remplir Identifiants Test'),
+                    ),
+
                     TextButton(
                       onPressed: auth.occupe
                           ? null
