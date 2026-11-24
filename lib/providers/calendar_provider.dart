@@ -23,6 +23,23 @@ class CalendarProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Planification d'une irrigation à distance
+  void planifierIrrigation({
+    required String zoneNom,
+    required DateTime dateHeure,
+    required int dureeMinutes,
+  }) {
+    final nouvelleTache = CropTask(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      zoneNom: zoneNom,
+      titre: 'Irrigation à distance ($dureeMinutes min)',
+      type: TypeTache.arrosage,
+      date: dateHeure,
+      estFaite: false,
+    );
+    ajouterTache(nouvelleTache);
+  }
+
   void basculerEtat(String id) {
     final index = _taches.indexWhere((t) => t.id == id);
     if (index != -1) {
@@ -42,6 +59,9 @@ class CalendarProvider extends ChangeNotifier {
   }
 
   void _sauvegarder() {
-    _prefs.setString('crop_tasks', jsonEncode(_taches.map((t) => t.toJson()).toList()));
+    _prefs.setString(
+      'crop_tasks',
+      jsonEncode(_taches.map((t) => t.toJson()).toList()),
+    );
   }
 }
