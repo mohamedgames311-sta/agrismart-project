@@ -4,12 +4,10 @@ import 'package:provider/provider.dart';
 import 'package:agrismart/providers/zones_provider.dart';
 import 'package:agrismart/providers/auth_provider.dart';
 import 'package:agrismart/providers/reglages_provider.dart';
-<<<<<<< HEAD
+
 import 'package:agrismart/screens/crop_calendar_page.dart';
-=======
 import 'package:agrismart/screens/suivi_eau_page.dart';
 import 'package:agrismart/screens/detection_maladie_page.dart';
->>>>>>> origin/main
 
 import 'a_propos_page.dart';
 
@@ -100,26 +98,35 @@ class ProfilPage extends StatelessWidget {
 
             const SizedBox(height: 12),
 
-<<<<<<< HEAD
+            // Calendrier des cultures
             Card(
               child: ListTile(
                 leading: const Icon(Icons.calendar_month),
                 title: const Text('Calendrier des cultures'),
-=======
-            // Consommation d'eau par zone
-            Card(
-              child: ListTile(
-                leading: const Icon(Icons.water_drop, color: Colors.blue),
-                title: const Text('Consommation d\'eau par zone'),
->>>>>>> origin/main
                 trailing: const Icon(Icons.arrow_forward_ios),
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-<<<<<<< HEAD
                       builder: (_) => const CropCalendarPage(),
-=======
+                    ),
+                  );
+                },
+              ),
+            ),
+
+            const SizedBox(height: 12),
+
+            // Consommation d'eau par zone
+            Card(
+              child: ListTile(
+                leading: const Icon(Icons.water_drop, color: Colors.blue),
+                title: const Text('Consommation d\'eau par zone'),
+                trailing: const Icon(Icons.arrow_forward_ios),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
                       builder: (_) => const SuiviEauPage(),
                     ),
                   );
@@ -140,7 +147,6 @@ class ProfilPage extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (_) => const DetectionMaladiePage(),
->>>>>>> origin/main
                     ),
                   );
                 },
