@@ -5,35 +5,35 @@ import 'package:agrismart/providers/zones_provider.dart';
 import 'package:agrismart/theme/app_theme.dart';
 import 'package:agrismart/widgets/resume_exploitation.dart';
 import 'package:agrismart/widgets/meteo_card.dart';
+import 'package:agrismart/widgets/smart_notification_card.dart';
 
 class StatistiquesPage extends StatelessWidget {
   const StatistiquesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Read the shared zones from Provider.
+    // Lecture des zones via le Provider
     final zones = context.watch<ZonesProvider>().zones;
 
-    // Sort zones from driest to wettest.
+    // Tri des zones de la plus sèche à la plus humide
     final tri = [...zones]
       ..sort((a, b) => a.humidite.compareTo(b.humidite));
 
-    final aIrriguer =
-        zones.where((z) => z.besoinIrrigation).length;
+    final aIrriguer = zones.where((z) => z.besoinIrrigation).length;
 
-    // Calculate the percentage safely.
+    // Calcul du pourcentage en toute sécurité
     final pourcentage =
     zones.isEmpty ? 0 : (aIrriguer * 100 / zones.length).round();
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor:
-        Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Statistiques'),
       ),
       body: ListView(
         children: [
           const MeteoCard(),
+          const SmartNotificationCard(), // Carte des notifications intelligentes
 
           // Carte d'accès au Suivi de la consommation d'eau
           Card(
