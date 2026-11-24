@@ -4,7 +4,12 @@ import 'package:provider/provider.dart';
 import 'package:agrismart/providers/zones_provider.dart';
 import 'package:agrismart/providers/auth_provider.dart';
 import 'package:agrismart/providers/reglages_provider.dart';
+<<<<<<< HEAD
 import 'package:agrismart/screens/crop_calendar_page.dart';
+=======
+import 'package:agrismart/screens/suivi_eau_page.dart';
+import 'package:agrismart/screens/detection_maladie_page.dart';
+>>>>>>> origin/main
 
 import 'a_propos_page.dart';
 
@@ -95,16 +100,47 @@ class ProfilPage extends StatelessWidget {
 
             const SizedBox(height: 12),
 
+<<<<<<< HEAD
             Card(
               child: ListTile(
                 leading: const Icon(Icons.calendar_month),
                 title: const Text('Calendrier des cultures'),
+=======
+            // Consommation d'eau par zone
+            Card(
+              child: ListTile(
+                leading: const Icon(Icons.water_drop, color: Colors.blue),
+                title: const Text('Consommation d\'eau par zone'),
+>>>>>>> origin/main
                 trailing: const Icon(Icons.arrow_forward_ios),
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
+<<<<<<< HEAD
                       builder: (_) => const CropCalendarPage(),
+=======
+                      builder: (_) => const SuiviEauPage(),
+                    ),
+                  );
+                },
+              ),
+            ),
+
+            const SizedBox(height: 12),
+
+            // Détection des maladies (IA)
+            Card(
+              child: ListTile(
+                leading: const Icon(Icons.local_hospital, color: Colors.red),
+                title: const Text('Détection des maladies (IA)'),
+                trailing: const Icon(Icons.arrow_forward_ios),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => const DetectionMaladiePage(),
+>>>>>>> origin/main
                     ),
                   );
                 },

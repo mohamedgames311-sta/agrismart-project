@@ -9,7 +9,11 @@ import 'package:agrismart/providers/zones_provider.dart';
 import 'package:agrismart/providers/auth_provider.dart';
 import 'package:agrismart/providers/meteo_provider.dart';
 import 'package:agrismart/providers/reglages_provider.dart';
+<<<<<<< HEAD
 import 'package:agrismart/providers/calendar_provider.dart';
+=======
+import 'package:agrismart/providers/consommation_provider.dart'; // <-- IMPORT AJOUTÉ HERE
+>>>>>>> origin/main
 import 'package:agrismart/screens/auth_gate.dart';
 import 'package:agrismart/services/auth_service.dart';
 import 'package:agrismart/services/auth_locale_service.dart';
@@ -35,6 +39,9 @@ Future<void> main() async {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider(
+          create: (_) => ConsommationProvider(), // <-- DÉCLARATION DU PROVIDER
+        ),
         ChangeNotifierProvider(
           create: (_) => AuthProvider(authService),
         ),
